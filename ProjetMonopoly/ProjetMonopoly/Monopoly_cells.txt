@@ -1,0 +1,40 @@
+Case Depart,0,Depart
+Belleville,1,Marron
+Caisse de Communaute,2,Communaute
+Lecourbe,3,Marron
+Impôts,4,Taxe
+Gare Montparnasse,5,Gare
+Vaugirard,6,Bleu ciel
+Carte Chance,7,Chance
+Courcelles,8,Bleu ciel
+Republiques,9,Bleu ciel
+Simple Visite,10,Visite
+La Villette,11,Rose
+Cie electricite,12,Cies
+Neuilly,13,Rose
+Paradis,14,Rose
+Gare de Lyon,15,Gare
+Mozart,16,Orange
+Caisse de Communaute,17,Communaute
+Saint-Michel,18,Orange
+Pigalle,19,Orange
+Parc Gratuit,20,Parc
+Matignon,21,Rouge
+Carte Chance,22,Chance
+Malesherbes,23,Rouge
+Henri-Martin,24,Rouge
+Gare du Nord,25,Gare
+Saint-Honore,26,Jaune
+La Bourse,27,Jaune
+Cie des Eaux,28,Cies
+La Fayette,29,Jaune
+Allez en Prison,30,Prison
+Breteuil,31,Vert
+Foch,32,Vert
+Caisse de Communaute,33,Communaute
+Capucines,34,Vert
+Gare Saint-Lazare,35,Gare
+Carte Chance,36,Chance
+Champs-elysees,37,Bleu Fonce
+Taxe de Luxe,38,taxe
+La Paix,39,Bleu Fonce
