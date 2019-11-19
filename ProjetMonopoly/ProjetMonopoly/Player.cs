@@ -11,7 +11,7 @@ namespace ProjetMonopoly
         private String _name;
         private Dictionary<int, int> _balance;
         private int _position;
-        //private List<Cell> _properties;
+        private List<Cell> _properties;
 
         public Player(string name, Dictionary<int, int> balance,int position)
         {
