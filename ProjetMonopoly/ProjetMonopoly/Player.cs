@@ -1,27 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace ProjetMonopoly
 {
-    public abstract class Player
+    enum Pawns { Barrow = 1, Boat, Boot, Car, Dog, Hat, Iron, Thimble };
+
+    public class Player
     {
-        public abstract string Pawn { get; }
-        public abstract Dictionary<int,int> Bank { get; set; }
-        public abstract int Position { get; set; }
-        public abstract List<Cards> Cards { get; set; }
+        private String _name;
+        private Dictionary<int, int> _balance;
+        private int _position;
+        private List<Cards> _cards;
 
-       
-
-        public Dictionary<int,int> BankStart()
+        public Player(string name, Dictionary<int, int> balance,int position, List<Cards> cards)
         {
-            this.bills.Add(500, 2);
-            this.bills.Add(100, 4);
-            this.bills.Add(50, 1);
-            this.bills.Add(20, 1);
-            this.bills.Add(10, 2);
-            this.bills.Add(5, 1);
-            this.bills.Add(1, 5);
-            return bills;
+            this._name = name;
+            this._balance = balance;
+            this._position = position;
+            this._cards = cards;
         }
+
+        public string Name { get; }
+        public Dictionary<int,int> Balance { get; set; }
+        public int Position { get; set; }
+        public List<Cards> Cards { get; set; }
+
     }
 }
