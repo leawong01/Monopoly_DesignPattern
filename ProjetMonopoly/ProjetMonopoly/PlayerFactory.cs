@@ -7,8 +7,9 @@ namespace ProjetMonopoly
     {
         public Player GetPlayer(int i)
         {
-            return null;
-            //return Player(Enum.GetName(typeof(Pawns),i),)
+            Dictionary<int, int> bills = BankStart();
+            Player player = new Player(Enum.GetName(typeof(Pawns), i), bills, 0);
+            return player;
         }
 
         public Dictionary<int,int> BankStart()
