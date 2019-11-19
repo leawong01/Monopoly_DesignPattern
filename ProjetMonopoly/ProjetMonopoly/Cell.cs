@@ -31,7 +31,7 @@ namespace ProjetMonopoly
         //Methods
         public override string ToString()
         {
-            string result = string.Format("Vous etes actuellement sur la case {0} en position {1}, cette case est une case {3}, elle coute {4} à l'achat et le loyer est de {5}.", name, position, type, buyingprice, cost);
+            string result = string.Format("Vous etes actuellement sur la case {0} en position {1}, cette case est une case {2}, elle coute {3} à l'achat et le loyer est de {4}.", name, position, type, buyingprice, cost);
             return result;
 
         }

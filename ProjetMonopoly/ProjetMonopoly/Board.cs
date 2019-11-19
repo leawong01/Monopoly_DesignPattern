@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ProjetMonopoly
     public class Board
     {
         /**Variables d'instance*/
-        Cell[] CellList = new Cell[40];
+        public ArrayList CellList = new ArrayList();
 
 
         /** Constructeur privé */
@@ -32,16 +33,13 @@ namespace ProjetMonopoly
         }
         public void BoardFilling()
         {
-            string[] lines = System.IO.File.ReadAllLines("./Monopoly_cells");
+            string[] lines = System.IO.File.ReadAllLines("../../Monopoly_cells.txt");
             foreach (string line in lines)
             {
                 string[] ligne = line.Split(',');
                 Cell case1 = new Cell(Convert.ToInt32(ligne[1]), ligne[0], ligne[2], 0, 0);
-                CellList.Append(case1);
+                CellList.Add(case1);
             }
-
-
-            //Creation des cases une par une
         }
     }
 }

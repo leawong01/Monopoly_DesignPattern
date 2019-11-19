@@ -6,7 +6,14 @@ namespace ProjetMonopoly
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Board board = Board.getInstance();
+            for (int i = 0; i < 40; i++)
+                {
+                Console.WriteLine(board.CellList[i].ToString());
+                }
+
+            Console.ReadKey();
+
         }
     }
 }
