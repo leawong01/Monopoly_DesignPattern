@@ -37,8 +37,5 @@
     <Compile Include="PlayerFactory.cs" />
     <Compile Include="Cards.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cards\" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
