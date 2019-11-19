@@ -36,25 +36,8 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayerFactory.cs" />
     <Compile Include="Cards.cs" />
-    <Compile Include="Players\Boat.cs" />
-    <Compile Include="Players\Boot.cs" />
-    <Compile Include="Players\BootFactory.cs" />
-    <Compile Include="Players\Dog.cs" />
-    <Compile Include="Players\DogFactory.cs" />
-    <Compile Include="Players\Hat.cs" />
-    <Compile Include="Players\HatFactory.cs" />
-    <Compile Include="Players\Iron.cs" />
-    <Compile Include="Players\Car.cs" />
-    <Compile Include="Players\Barrow.cs" />
-    <Compile Include="Players\Thimble.cs" />
-    <Compile Include="Players\BarrowFactory.cs" />
-    <Compile Include="Players\BoatFactory.cs" />
-    <Compile Include="Players\CarFactory.cs" />
-    <Compile Include="Players\IronFactory.cs" />
-    <Compile Include="Players\ThimbleFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Players\" />
     <Folder Include="Cards\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

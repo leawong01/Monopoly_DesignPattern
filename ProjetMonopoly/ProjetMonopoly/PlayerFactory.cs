@@ -3,9 +3,13 @@ using System.Collections.Generic;
 
 namespace ProjetMonopoly
 {
-    public abstract class PlayerFactory
+    public class PlayerFactory
     {
-        public abstract Player GetPlayer();
+        public Player GetPlayer(int i)
+        {
+            return null;
+            //return Player(Enum.GetName(typeof(Pawns),i),)
+        }
 
         public Dictionary<int,int> BankStart()
         {
