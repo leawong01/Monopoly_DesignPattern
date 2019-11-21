@@ -2,7 +2,7 @@ Case Depart,0,Depart
 Belleville,1,Marron
 Caisse de Communaute,2,Communaute
 Lecourbe,3,Marron
-Impôts,4,Taxe
+Impots,4,Taxe
 Gare Montparnasse,5,Gare
 Vaugirard,6,Bleu ciel
 Carte Chance,7,Chance
@@ -36,5 +36,5 @@ Capucines,34,Vert
 Gare Saint-Lazare,35,Gare
 Carte Chance,36,Chance
 Champs-elysees,37,Bleu Fonce
-Taxe de Luxe,38,taxe
+Taxe de Luxe,38,Taxe
 La Paix,39,Bleu Fonce

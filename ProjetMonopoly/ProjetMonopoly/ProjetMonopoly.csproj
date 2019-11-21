@@ -38,6 +38,9 @@
     <Compile Include="Cards.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="TestsP.cs" />
+    <Compile Include="TestL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

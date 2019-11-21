@@ -31,7 +31,37 @@ namespace ProjetMonopoly
         //Methods
         public override string ToString()
         {
-            string result = string.Format("Vous etes actuellement sur la case {0} en position {1}, cette case est une case {2}, elle coute {3} à l'achat et le loyer est de {4}.", name, position, type, buyingprice, cost);
+			string result = null;
+
+            if(type.Equals("Communaute")|| type.Equals("Chance"))
+			{
+                result= string.Format("You are actually on the cell {0}, position {1}. \nPick a card ! ",name, position);
+			}
+
+            else if(type.Equals("Taxe"))
+			{
+				result = string.Format("You are actually on the cell {0}, position {1}.\nPay {2}euros to the bank ! ", name, position,buyingprice);
+			}
+
+            else if(type.Equals("Parc"))
+			{
+				result = string.Format("You are actually on the cell {0}, position {1}.\nRelax !", name, position);
+			}
+
+            else if(type.Equals("Prison"))
+			{
+				result = string.Format("You are actually on the cell {0}, position {1}. \nGo directly to Jail without going through the start! ", name, position);
+			}
+            else if(type.Equals("Depart"))
+			{
+				result = string.Format("You are actually on the Start cell.\nReceive 200euros !");
+			}
+			else
+			{
+				result = string.Format("You are actually on the cell {0}, position {1}, this cell belongs to the group {2}." +
+				"\nIt costs {3}euros to buy it and the rent is {4}euros.", name, position, type, buyingprice, cost);
+			}
+				
             return result;
 
         }

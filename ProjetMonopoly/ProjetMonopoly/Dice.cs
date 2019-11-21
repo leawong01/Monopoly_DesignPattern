@@ -36,8 +36,9 @@ namespace ProjetMonopoly
 		{
             List<object> result = new List<object>();
 			Random rand = new Random();
-            this.resd1 = rand.Next(1, 7);
-            this.resd2 = rand.Next(1, 7);            
+			this.resd1 = rand.Next(1, 7);
+			this.resd2 = rand.Next(1, 7);
+			//resd1 = resd2 = 2;
             if(resd1==resd2)
 			{
 				this.dual = true;

@@ -6,14 +6,16 @@ namespace ProjetMonopoly
     {
         public static void Main(string[] args)
         {
-            Board board = Board.getInstance();
-            for (int i = 0; i < 40; i++)
-                {
-                Console.WriteLine(board.CellList[i].ToString());
-                }
+            TestsP testsp = new TestsP();
 
-            Console.ReadKey();
+            testsp.program();
 
+            TestL testl = new TestL();
+
+            //testl.program();
+            
         }
     }
+
+    
 }
