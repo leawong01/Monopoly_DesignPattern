@@ -164,8 +164,18 @@ namespace ProjetMonopoly
 						p.Balance += 200;
 					}
 
-					Console.WriteLine(board.CellList[p.Position]);
-                    
+					Console.WriteLine(currentcell);
+                    if (p.Position == 10)
+                    {
+                        if(p.IsInJail == true)
+                        {
+                            Console.WriteLine("You are in jail !");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Lucky you, you are on a simple visit !");
+                        }
+                    }
 					
 				}
 				list_players[0].Balance = 0;

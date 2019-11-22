@@ -13,6 +13,7 @@ namespace ProjetMonopoly
         private int _position;
         private List<Cell> _properties;
 		private bool isInJail;
+        private int sentence;
 
         public Player(string name, int balance,int position)
         {

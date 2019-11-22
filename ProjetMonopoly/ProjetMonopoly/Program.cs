@@ -6,14 +6,15 @@ namespace ProjetMonopoly
     {
         public static void Main(string[] args)
         {
+
             TestsP testsp = new TestsP();
 
-            testsp.program();
+            //testsp.program();
 
             TestL testl = new TestL();
 
-            //testl.program();
-            
+            testl.program();
+            Console.ReadKey();            
         }
     }
 
