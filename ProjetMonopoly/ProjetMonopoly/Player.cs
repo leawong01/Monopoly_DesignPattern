@@ -25,6 +25,7 @@ namespace ProjetMonopoly
             this._position = position;
             this._properties = new List<Cell>();
 			this.isInJail = false;
+            this.sentence = 0;
         }
 
         public string Name { get { return _name; } set { _name = value; } }
@@ -32,6 +33,7 @@ namespace ProjetMonopoly
         public int Position { get { return _position; } set { _position = value; } }
         public List<Cell> Properties { get { return _properties; } set { _properties = value; } }
         public bool IsInJail { get { return isInJail; } set { isInJail = value; } }
+        public int Sentence { get { return sentence; } set { sentence = value; } }
 
         public override string ToString()
         {

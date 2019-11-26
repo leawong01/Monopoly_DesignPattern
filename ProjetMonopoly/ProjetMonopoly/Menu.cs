@@ -56,10 +56,74 @@ namespace ProjetMonopoly
 			{
 				Console.WriteLine("\n\nIt's your third double, go immediately to Jail");
 				p.IsInJail = true;
+                p.Sentence = 1;
 			}
 
 			return p.IsInJail;
 		}
+
+        public int CheckJail(Player p,Dice dice)
+        {
+            int choice = 0;
+            int diceroll = 0;
+            if (p.Sentence == 1)
+            {
+                Console.WriteLine("It's your first turn in jail, you can pay 50euros or make a double to go out.");
+                Console.WriteLine("You currently have {0}euros on your account", p.Balance);
+                do
+                {
+                    Console.WriteLine("Press 1 to pay 50 euros \nPress 2 to roll the dices");
+                    choice = int.Parse(Console.ReadLine());
+                } while (choice != 1 || choice != 2);
+                if (choice == 1)
+                {
+                    if (p.Balance >= 50)
+                    {
+                        Console.WriteLine("You just paid 50euros, you can roll the dices and go out of jail !");
+                        p.Balance -= 50;
+                        p.IsInJail = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, you don't have enough money, try to make a double");
+                        choice = 2;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("May the luck be with you ! \nRoll the dices");
+                    List<Object> resdice = dice.DiceRoll();
+                    dice.Dual = (bool)resdice[1];
+                    if (dice.Dual)
+                    {
+                        diceroll = (int)resdice[0];
+                        Console.WriteLine("Congratulations you made a double {0}!!!\nGo out of jail", diceroll / 2);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too bad, stay in jail and try again next turn");
+                        p.Sentence += 1;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("May the luck be with you ! \nRoll the dices");
+                List<Object> resdice = dice.DiceRoll();
+                dice.Dual = (bool)resdice[1];
+                if (dice.Dual)
+                {
+                    diceroll = (int)resdice[0];
+                    Console.WriteLine("Congratulations you made a double {0}!!!\nGo out of jail", diceroll / 2);
+                }
+                else
+                {
+                    Console.WriteLine("Too bad, stay in jail and try again next turn");
+                    p.Sentence += 1;
+                }
+            }
+            return diceroll;
+        }
 
         public Player Winner(Player[] players)
 		{
@@ -108,7 +172,8 @@ namespace ProjetMonopoly
 				Console.WriteLine("\nTour n.{0}", tour);
 				for (int i = 0; i < list_players.Length; i++)
 				{
-					string validate = " ";
+                    Dice dice = new Dice();
+                    string validate = " ";
 					Player p = list_players[i];
 					do
 					{
@@ -116,8 +181,7 @@ namespace ProjetMonopoly
 						validate = Console.ReadLine().ToUpper();
 					} while (validate != "Y");
 
-					Dice dice = new Dice();
-
+					
 					int diceroll = 0;
 
 					List<Object> resdice = dice.DiceRoll();
