@@ -19,12 +19,7 @@ namespace ProjetMonopoly
             this.name = name;
             this.type = type;
             this.buyingprice = buyingprice;
-            this.cost = cost;
-            for(int i = 0; i < 10; i++)
-            {
-                //ceci est une modif
-                i++
-            }
+            this.cost = cost;            
         }
 
         //Properties

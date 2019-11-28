@@ -14,6 +14,7 @@ namespace ProjetMonopoly
         private List<Cell> _properties;
 		private bool isInJail;
         private int sentence;
+        private int dble;
 
         public Player(string name, int balance,int position)
         {
@@ -26,6 +27,7 @@ namespace ProjetMonopoly
             this._properties = new List<Cell>();
 			this.isInJail = false;
             this.sentence = 0;
+            this.dble = 0;
         }
 
         public string Name { get { return _name; } set { _name = value; } }
@@ -34,6 +36,7 @@ namespace ProjetMonopoly
         public List<Cell> Properties { get { return _properties; } set { _properties = value; } }
         public bool IsInJail { get { return isInJail; } set { isInJail = value; } }
         public int Sentence { get { return sentence; } set { sentence = value; } }
+        public int Dble { get { return dble; } set { dble = value; } }
 
         public override string ToString()
         {
@@ -41,20 +44,7 @@ namespace ProjetMonopoly
             return result;
         }
 
-        public Dictionary<int,int> DetailledBalance()
-		{
-			int rest = Balance;
-			Dictionary<int, int> detail = new Dictionary<int, int>();
-			int[] bills = { 500, 100, 50, 20, 10, 5, 1 };
-            for(int i =0;i<bills.Length;i++)
-			{
-				int temp = rest / bills[i];
-				detail[bills[i]] = temp;
-				rest -= temp*bills[i]; 
-			}
-
-			return detail;
-		}
+        
 
     }
 }

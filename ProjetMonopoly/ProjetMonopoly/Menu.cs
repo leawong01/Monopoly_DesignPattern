@@ -9,6 +9,11 @@ namespace ProjetMonopoly
         {           
         }
 
+        public int DiceRoll(DiceRollStrategy strategy, Dice dice, Player p, int i)
+        {
+            return strategy.DisplayDiceRoll(dice, p, i);
+        }
+
 		public Player[] NbOfPlayers()
 		{
 			int nb_player = 0;
@@ -38,34 +43,12 @@ namespace ProjetMonopoly
 			return list_players;
 		}
 
-        public void BalancePlot(Player p)
-		{
-			Console.WriteLine("Detailled Balance of Player '{0}' :\n", p.Name);
-			Dictionary<int, int> dbalance = p.DetailledBalance();
-			Dictionary<int, int>.KeyCollection keycoll = dbalance.Keys;
-			foreach (int key in keycoll)
-			{
-				Console.WriteLine("{0} bill(s) of {1} euros\n", dbalance[key], key);
-			}
-		}
-
-        public bool MadeDouble(Player p,int diceroll,int dble)
-		{
-			Console.WriteLine("\n\nCongrats you made a double {0}.\nMove your pawn and play again", diceroll / 2);
-			if (dble == 3)
-			{
-				Console.WriteLine("\n\nIt's your third double, go immediately to Jail");
-				p.IsInJail = true;
-                p.Sentence = 1;
-			}
-
-			return p.IsInJail;
-		}
-
         public int CheckJail(Player p,Dice dice)
         {
+            Console.WriteLine("\n{0}, it's your turn.\n", p.Name);
             int choice = 0;
             int diceroll = 0;
+            int turnleft = 2;
             if (p.Sentence == 1)
             {
                 Console.WriteLine("It's your first turn in jail, you can pay 50euros or make a double to go out.");
@@ -74,7 +57,11 @@ namespace ProjetMonopoly
                 {
                     Console.WriteLine("Press 1 to pay 50 euros \nPress 2 to roll the dices");
                     choice = int.Parse(Console.ReadLine());
-                } while (choice != 1 || choice != 2);
+                    if(choice < 1 || choice > 2)
+                    {
+                        Console.WriteLine("Invalid choice please do it again.");
+                    }
+                } while (choice < 1 || choice > 2);
                 if (choice == 1)
                 {
                     if (p.Balance >= 50)
@@ -82,46 +69,37 @@ namespace ProjetMonopoly
                         Console.WriteLine("You just paid 50euros, you can roll the dices and go out of jail !");
                         p.Balance -= 50;
                         p.IsInJail = false;
+                        turnleft = DiceRoll(new JailRollDice(),dice, p, 1);                        
                     }
                     else
                     {
                         Console.WriteLine("Sorry, you don't have enough money, try to make a double");
-                        choice = 2;
+                        turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
+
                     }
                 }
                 else
                 {
                     Console.WriteLine("May the luck be with you ! \nRoll the dices");
-                    List<Object> resdice = dice.DiceRoll();
-                    dice.Dual = (bool)resdice[1];
-                    if (dice.Dual)
-                    {
-                        diceroll = (int)resdice[0];
-                        Console.WriteLine("Congratulations you made a double {0}!!!\nGo out of jail", diceroll / 2);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Too bad, stay in jail and try again next turn");
-                        p.Sentence += 1;
-                    }
+                    turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
                 }
             }
-            else
+            else if (p.Sentence == 2)
             {
                 Console.WriteLine("May the luck be with you ! \nRoll the dices");
-                List<Object> resdice = dice.DiceRoll();
-                dice.Dual = (bool)resdice[1];
-                if (dice.Dual)
-                {
-                    diceroll = (int)resdice[0];
-                    Console.WriteLine("Congratulations you made a double {0}!!!\nGo out of jail", diceroll / 2);
-                }
-                else
-                {
-                    Console.WriteLine("Too bad, stay in jail and try again next turn");
-                    p.Sentence += 1;
-                }
+                turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
             }
+            else if (p.Sentence == 3)
+            {
+                Console.WriteLine("It's your third turn iin Jail, pay 50euros, roll the dices and move your pawn !");
+                turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
+            }
+
+            if(turnleft != 0)
+            {
+                Console.WriteLine("You have {0} left turns in Jail.\nHang on ! ", turnleft);
+            }
+            
             return diceroll;
         }
 
@@ -149,18 +127,56 @@ namespace ProjetMonopoly
 			return winner;
 		}
 
+        public void DisplayCell(Board board,Player p)
+        {
+            if (p.Position > 39)
+            {
+                p.Position -= 40;
+                p.Balance += 200;
+            }
+
+            Cell currentcell = (Cell)board.CellList[p.Position];
+
+            if (currentcell.Type.Equals("Taxe"))
+            {
+                p.Balance -= currentcell.Buyingprice;
+            }
+
+            if (currentcell.Type.Equals("Prison"))
+            {
+                Console.WriteLine((Cell)board.CellList[30]);
+                p.Position = 10;
+                p.IsInJail = true;
+                p.Sentence = 1;
+            }            
+
+            Console.WriteLine(currentcell);
+
+            if (p.Position == 10)
+            {
+                if (p.IsInJail == true)
+                {
+                    Console.WriteLine("You are in jail !");
+                }
+                else
+                {
+                    Console.WriteLine("Lucky you, you are on a simple visit !");
+                }
+            }
+        }
+
         public void StartGame()
 		{
 			Board board = Board.getInstance();
 			Player[] list_players = NbOfPlayers();
 			Console.WriteLine("The pawns are :");
+            Dice dice = new Dice();
             foreach(Player p in list_players)
 			{
 				Console.WriteLine(p.Name);
 			}
 			int tour = 0;
 			bool endgame = false;
-			int dble = 0;
 			Console.WriteLine("\n********************************************************************************");
 			Console.WriteLine("********************************************************************************");
 			Console.WriteLine("\t\t\t\tGame Start !");
@@ -172,84 +188,31 @@ namespace ProjetMonopoly
 				Console.WriteLine("\nTour n.{0}", tour);
 				for (int i = 0; i < list_players.Length; i++)
 				{
-                    Dice dice = new Dice();
-                    string validate = " ";
+                    
 					Player p = list_players[i];
-					do
-					{
-						Console.WriteLine("\n{0}, it's your turn.\nTo throw the dices enter 'Y'", p.Name);
-						validate = Console.ReadLine().ToUpper();
-					} while (validate != "Y");
-
-					
-					int diceroll = 0;
-
-					List<Object> resdice = dice.DiceRoll();
-
-					diceroll = (int)resdice[0];
-
-					dice.Dual = (bool)resdice[1];
-
-					if (dice.Dual)
-					{
-						dble += 1;
-						if (MadeDouble(p,diceroll, dble))
-						{
-							p.Position = 10;
-						}
-						else
-						{
-							i -= 1;
-							p.Position += diceroll;
-						}
-					}
-					else
-					{
-						Console.WriteLine("\n\nDiceroll = {0}\n\n", diceroll);
-						p.Position += diceroll;
-					}
-
-					Cell currentcell = (Cell) board.CellList[p.Position];
-
-					if (currentcell.Type.Equals("Taxe"))
-					{
-						p.Balance -= currentcell.Buyingprice;
-					}
-
-                    if(currentcell.Type.Equals("Prison"))
-					{
-						p.Position = 10;
-						p.IsInJail = true;
-					}
-
-					if (p.Position > 39)
-					{
-						p.Position -= 40;
-						p.Balance += 200;
-					}
-
-					Console.WriteLine(currentcell);
-                    if (p.Position == 10)
+                    if (p.IsInJail == false)
                     {
-                        if(p.IsInJail == true)
-                        {
-                            Console.WriteLine("You are in jail !");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Lucky you, you are on a simple visit !");
-                        }
+
+                        i = DiceRoll(new RegularRollDice(), dice, p, i);
+                        
                     }
+                    else
+                    {
+                        CheckJail(p, dice);
+                    }
+
+
+                    DisplayCell(board,p);
 					
 				}
-				list_players[0].Balance = 0;
+				//list_players[0].Balance = 0;
 				Player winner = Winner(list_players);
 
 				if (winner != null)
 				{
 					Console.WriteLine("\n********************************************************************************");
 					Console.WriteLine("********************************************************************************");
-					Console.WriteLine("\t\t\t\tGame Over \n\t\t\t\tThe player {0} won !",winner.Name);
+					Console.WriteLine("\t\t\t\tGame Over \n\t\t\t   The player {0} won !",winner.Name);
 					Console.WriteLine("********************************************************************************");
 					Console.WriteLine("********************************************************************************");
 					endgame = true;
