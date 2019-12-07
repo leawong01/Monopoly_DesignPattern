@@ -3,10 +3,20 @@ namespace ProjetMonopoly
 {
     public class JailRollDice : DiceRollStrategy
     {
+        /// <summary>
+        /// Implementation of Strategy Pattern 
+        /// </summary>
+        /// <param name="dice"></param>
+        /// <param name="p"></param>
+        /// <param name="choice">
+        ///  1 is if the player choose to pay on turn 1 so he directly go out
+        ///  2 is if the player can't pay or if he chose to try making a double
+        /// </param>
+        /// <returns></returns>
         public int DisplayDiceRoll(Dice dice,Player p, int choice)
         {
             int diceroll = 0;
-            int turnleft = 2;
+            int turnleft = 3;
             string validate = " ";
             do
             {

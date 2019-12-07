@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">anycpu</Platform>
-    <ProjectGuid>{9F66785A-8105-41C4-982E-FB87E02C7CC9}</ProjectGuid>
+    <ProjectGuid>{AA91F5FC-40CC-4289-A8E3-C6E815F1E624}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ProjetMonopoly</RootNamespace>
     <AssemblyName>ProjetMonopoly</AssemblyName>
@@ -32,15 +32,21 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dice.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerFactory.cs" />
-    <Compile Include="Cards.cs" />
-    <Compile Include="Cell.cs" />
-    <Compile Include="Board.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="TestsP.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Board.cs" />
+    <Compile Include="Dice.cs" />
+    <Compile Include="PlayerFactory.cs" />
     <Compile Include="TestL.cs" />
+    <Compile Include="TestsP.cs" />
+    <Compile Include="Cards.cs" />
+    <Compile Include="DiceRollStrategy.cs" />
+    <Compile Include="RegularRollDice.cs" />
+    <Compile Include="JailRollDice.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Monopoly_cells.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

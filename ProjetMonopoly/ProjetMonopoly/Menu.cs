@@ -43,11 +43,10 @@ namespace ProjetMonopoly
 			return list_players;
 		}
 
-        public int CheckJail(Player p,Dice dice)
+        public void CheckJail(Player p,Dice dice)
         {
             Console.WriteLine("\n{0}, it's your turn.\n", p.Name);
             int choice = 0;
-            int diceroll = 0;
             int turnleft = 2;
             if (p.Sentence == 1)
             {
@@ -75,7 +74,6 @@ namespace ProjetMonopoly
                     {
                         Console.WriteLine("Sorry, you don't have enough money, try to make a double");
                         turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
-
                     }
                 }
                 else
@@ -99,8 +97,6 @@ namespace ProjetMonopoly
             {
                 Console.WriteLine("You have {0} left turns in Jail.\nHang on ! ", turnleft);
             }
-            
-            return diceroll;
         }
 
         public Player Winner(Player[] players)
@@ -188,8 +184,8 @@ namespace ProjetMonopoly
 				Console.WriteLine("\nTour n.{0}", tour);
 				for (int i = 0; i < list_players.Length; i++)
 				{
-                    
-					Player p = list_players[i];
+                    list_players[i - 1].Dble = 0;
+                    Player p = list_players[i];                    
                     if (p.IsInJail == false)
                     {
 
@@ -205,14 +201,14 @@ namespace ProjetMonopoly
                     DisplayCell(board,p);
 					
 				}
-				//list_players[0].Balance = 0;
+
 				Player winner = Winner(list_players);
 
 				if (winner != null)
 				{
 					Console.WriteLine("\n********************************************************************************");
 					Console.WriteLine("********************************************************************************");
-					Console.WriteLine("\t\t\t\tGame Over \n\t\t\t   The player {0} won !",winner.Name);
+                    Console.WriteLine("\t\t\t\tGame Over \n\t\t\t   The player {0} won !", winner.Name);
 					Console.WriteLine("********************************************************************************");
 					Console.WriteLine("********************************************************************************");
 					endgame = true;

@@ -36,6 +36,7 @@ namespace ProjetMonopoly
         /// <summary>
         /// Simulate a dice roll for both dices using Random
         /// If the dices have the same result, dual change in true
+        /// Declaration of 2 Random variables because the chance of making a double with one is too high
         /// </summary>
         /// <returns>
         /// both dual and the final result of the dice roll are returned through the structure Result

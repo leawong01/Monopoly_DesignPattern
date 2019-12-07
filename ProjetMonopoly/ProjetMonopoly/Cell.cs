@@ -59,7 +59,7 @@ namespace ProjetMonopoly
 			}
             else if (type.Equals("Visite"))
             {
-                result = string.Format("You are on the cell Jail, position 10, I hope you are here for a visit !");
+                result = string.Format("You are on the cell Jail, position 10.");
             }
 			else
 			{
