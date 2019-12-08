@@ -42,24 +42,24 @@ namespace ProjetMonopoly
 
         public bool MadeDouble(Player p, int diceroll, int dble)
         {
-            Console.WriteLine("\n\nCongrats you made a double {0}.", diceroll / 2);
+            Console.WriteLine("\n\nCongrats you made a double {0}.\n", diceroll / 2);
             if (dble == 3)
             {
-                Console.WriteLine("\n\nIt's your third double, go immediately to Jail !");
+                Console.WriteLine("\n\nIt's your third double, go immediately to Jail !\n\n");
                 p.IsInJail = true;
                 p.Sentence = 1;
                 p.Dble = 0;
             }
             else if(p.Position+diceroll == 30)
             {
-                Console.WriteLine("You are actually on the cell Allez en Prison, position 30. \nGo directly to Jail without going through the start! ");
+                Console.WriteLine("You are actually on the cell Allez en Prison, position 30. \nGo directly to Jail without going through the start!\n\n ");
                 p.IsInJail = true;
                 p.Sentence = 1;
                 p.Dble = 0;
             }
             else
             {
-                Console.WriteLine("Move your pawn and play again.");
+                Console.WriteLine("Move your pawn and play again.\n\n");
             }
 
             return p.IsInJail;

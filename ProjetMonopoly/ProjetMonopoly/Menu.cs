@@ -184,7 +184,14 @@ namespace ProjetMonopoly
 				Console.WriteLine("\nTour n.{0}", tour);
 				for (int i = 0; i < list_players.Length; i++)
 				{
-                    list_players[i - 1].Dble = 0;
+                    if (i > 0)
+                    {
+                        list_players[i - 1].Dble = 0;
+                    }
+                    else if (i == 0)
+                    {
+                        list_players[list_players.Length-1].Dble = 0;
+                    }
                     Player p = list_players[i];                    
                     if (p.IsInJail == false)
                     {
@@ -199,8 +206,9 @@ namespace ProjetMonopoly
 
 
                     DisplayCell(board,p);
-					
-				}
+                    Console.WriteLine("--------------------------------------------------------------------------------");
+                    Console.WriteLine("--------------------------------------------------------------------------------");
+                }
 
 				Player winner = Winner(list_players);
 
