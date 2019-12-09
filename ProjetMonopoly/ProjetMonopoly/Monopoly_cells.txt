@@ -1,40 +1,40 @@
-Case Depart,0,Depart
-Belleville,1,Marron
-Caisse de Communaute,2,Communaute
-Lecourbe,3,Marron
-Impots,4,Taxe
-Gare Montparnasse,5,Gare
-Vaugirard,6,Bleu ciel
-Carte Chance,7,Chance
-Courcelles,8,Bleu ciel
-Republiques,9,Bleu ciel
-Simple Visite,10,Visite
-La Villette,11,Rose
-Cie electricite,12,Cies
-Neuilly,13,Rose
-Paradis,14,Rose
-Gare de Lyon,15,Gare
-Mozart,16,Orange
-Caisse de Communaute,17,Communaute
-Saint-Michel,18,Orange
-Pigalle,19,Orange
-Parc Gratuit,20,Parc
-Matignon,21,Rouge
-Carte Chance,22,Chance
-Malesherbes,23,Rouge
-Henri-Martin,24,Rouge
-Gare du Nord,25,Gare
-Saint-Honore,26,Jaune
-La Bourse,27,Jaune
-Cie des Eaux,28,Cies
-La Fayette,29,Jaune
-Allez en Prison,30,Prison
-Breteuil,31,Vert
-Foch,32,Vert
-Caisse de Communaute,33,Communaute
-Capucines,34,Vert
-Gare Saint-Lazare,35,Gare
-Carte Chance,36,Chance
-Champs-elysees,37,Bleu Fonce
-Taxe de Luxe,38,Taxe
-La Paix,39,Bleu Fonce
+Case Depart,0,Depart,0,0
+Belleville,1,Marron,60,2
+Caisse de Communaute,2,Communaute,0,0
+Lecourbe,3,Marron,60,4
+Impots,4,Taxe,0,200
+Gare Montparnasse,5,Gare,200,25
+Vaugirard,6,Bleu ciel,100,6
+Carte Chance,7,Chance,0,0
+Courcelles,8,Bleu ciel,100,6
+Republique,9,Bleu ciel,120,8
+Simple Visite,10,Visite,0,0
+La Villette,11,Rose,140,10
+Cie electricite,12,Cies,150,0
+Neuilly,13,Rose,140,10
+Paradis,14,Rose,160,12
+Gare de Lyon,15,Gare,200,25
+Mozart,16,Orange,180,14
+Caisse de Communaute,17,Communaute,0,0
+Saint-Michel,18,Orange,180,14
+Pigalle,19,Orange,200,16
+Parc Gratuit,20,Parc,0,0
+Matignon,21,Rouge,220,18
+Carte Chance,22,Chance,0,0
+Malesherbes,23,Rouge,220,18
+Henri-Martin,24,Rouge,240,20
+Gare du Nord,25,Gare,200,25
+Saint-Honore,26,Jaune,260,22
+La Bourse,27,Jaune,260,22
+Cie des Eaux,28,Cies,150,0
+La Fayette,29,Jaune,280,24
+Allez en Prison,30,Prison,0,0
+Breteuil,31,Vert,300,26
+Foch,32,Vert,300,26
+Caisse de Communaute,33,Communaute,0,0
+Capucines,34,Vert,320,28
+Gare Saint-Lazare,35,Gare,200,25
+Carte Chance,36,Chance,0,0
+Champs-elysees,37,Bleu Fonce,350,35
+Taxe de Luxe,38,Taxe,0,100
+La Paix,39,Bleu Fonce,400,50
