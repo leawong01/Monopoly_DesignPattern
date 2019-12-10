@@ -47,7 +47,7 @@ namespace ProjetMonopoly
 
             else if(type.Equals("Taxe"))
 			{
-				result = string.Format("You are actually on the cell {0}, position {1}.\nPay {2}euros to the bank ! ", name, position,buyingprice);
+				result = string.Format("You are actually on the cell {0}, position {1}.\nPay {2}euros to the bank ! ", name, position,cost);
 			}
 
             else if(type.Equals("Parc"))

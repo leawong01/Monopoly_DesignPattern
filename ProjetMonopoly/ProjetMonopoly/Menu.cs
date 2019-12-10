@@ -11,6 +11,19 @@ namespace ProjetMonopoly
         {           
         }
 
+        /// <summary>
+        /// Method to declare the right way to display the diceroll of the Strategy Pattern
+        /// </summary>
+        /// <param name="strategy">
+        /// We declare JailRollDice if the player is currently in jail and RegularRollDice other way
+        /// </param>
+        /// <param name="dice"></param>
+        /// <param name="p"></param>
+        /// <param name="i">
+        /// The current turn of the player or the turns left in jail
+        /// </param>
+        /// <returns></returns>
+        /// 
         public int DiceRoll(DiceRollStrategy strategy, Dice dice, Player p, int i)
         {
             return strategy.DisplayDiceRoll(dice, p, i);
@@ -83,7 +96,8 @@ namespace ProjetMonopoly
                 {
                     if (p.Balance >= 50)
                     {
-                        Console.WriteLine("You just paid 50euros, you can roll the dices and go out of jail !");
+                        Console.WriteLine("You just paid 50euros,");
+                        Console.WriteLine("you now have {0} euros, you can roll the dices and go out of jail !", p.Balance);
                         p.Balance -= 50;
                         p.IsInJail = false;
                         turnleft = DiceRoll(new JailRollDice(),dice, p, 1);                        
