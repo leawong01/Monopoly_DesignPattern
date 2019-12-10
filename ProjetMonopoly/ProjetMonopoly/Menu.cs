@@ -69,7 +69,7 @@ namespace ProjetMonopoly
         /// <param name="dice"></param>
         public void JailTurn(Player p,Dice dice)
         {
-            Console.WriteLine("\n{0}, it's your turn.\n", p.Name);
+            Console.WriteLine("\t\t\t{0}, it's your turn.\n", p.Name);
             int choice = 0;
             int turnleft = 2;
             if (p.Sentence == 1)
@@ -96,38 +96,41 @@ namespace ProjetMonopoly
                 {
                     if (p.Balance >= 50)
                     {
-                        Console.WriteLine("You just paid 50euros,");
-                        Console.WriteLine("you now have {0} euros, you can roll the dices and go out of jail !", p.Balance);
+                        Console.WriteLine("\nYou just paid 50euros,");
                         p.Balance -= 50;
+                        Console.WriteLine("you now have {0} euros, you can roll the dices and go out of jail !", p.Balance);                        
                         p.IsInJail = false;
                         turnleft = DiceRoll(new JailRollDice(),dice, p, 1);                        
                     }
                     else
                     {
-                        Console.WriteLine("Sorry, you don't have enough money, try to make a double");
+                        Console.WriteLine("\nSorry, you don't have enough money, try to make a double");
                         turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("May the luck be with you ! \nRoll the dices");
+                    Console.WriteLine("\nMay the luck be with you ! \nRoll the dices");
                     turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
                 }
             }
             else if (p.Sentence == 2)
             {
-                Console.WriteLine("May the luck be with you ! \nRoll the dices");
+                Console.WriteLine("\nMay the luck be with you ! \nRoll the dices");
                 turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
             }
             else if (p.Sentence == 3)
             {
-                Console.WriteLine("It's your third turn in Jail, pay 50euros, roll the dices and move your pawn !");
-                turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
+                Console.WriteLine("\nIt's your third turn in Jail, pay 50euros, roll the dices and move your pawn !");
+                p.Balance -= 50;
+                p.IsInJail = false;
+                Console.WriteLine("you now have {0} euros", p.Balance);
+                turnleft = DiceRoll(new JailRollDice(), dice, p, 1);
             }
 
             if(turnleft != 0)
             {
-                Console.WriteLine("You have {0} left turns in Jail.\nHang on ! ", turnleft);
+                Console.WriteLine("\nYou have {0} turns left in Jail. Hang on ! \n", turnleft);
             }
         }
 
@@ -227,7 +230,7 @@ namespace ProjetMonopoly
 			while (!endgame)
 			{
 				tour += 1;
-				Console.WriteLine("\nTour n.{0}", tour);
+				Console.WriteLine("\nTour n.{0}\n", tour);
 				for (int i = 0; i < list_players.Length; i++)
 				{
                     if (i > 0)
@@ -250,9 +253,13 @@ namespace ProjetMonopoly
                         JailTurn(p, dice);
                     }
 
-
+                    if (tour == 1)
+                    {
+                        list_players[0].IsInJail = true;
+                        list_players[0].Sentence = 1;
+                    }
                     DisplayCell(board,p);
-                    Console.WriteLine("--------------------------------------------------------------------------------");
+                    Console.WriteLine("\n--------------------------------------------------------------------------------");
                     Console.WriteLine("--------------------------------------------------------------------------------");
                 }
 

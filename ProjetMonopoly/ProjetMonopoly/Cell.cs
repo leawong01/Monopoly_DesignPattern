@@ -11,8 +11,6 @@ namespace ProjetMonopoly
         string type;//Color or type
         int buyingprice;
         int cost;
-        int Nbhouse;
-        int Owner;
 
         //Constructor
         public Cell(int position, string name, string type, int buyingprice, int cost)

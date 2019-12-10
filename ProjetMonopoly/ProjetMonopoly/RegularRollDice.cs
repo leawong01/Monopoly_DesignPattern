@@ -27,7 +27,7 @@ namespace ProjetMonopoly
 
             do
             {
-                Console.WriteLine("\n{0}, it's your turn.\nTo throw the dices enter 'Y'", p.Name);
+                Console.WriteLine("\t\t\t{0}, it's your turn.\n\nTo throw the dices enter 'Y'", p.Name);
                 validate = Console.ReadLine().ToUpper();
             } while (validate != "Y");
 

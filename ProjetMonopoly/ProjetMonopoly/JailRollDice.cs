@@ -23,7 +23,7 @@ namespace ProjetMonopoly
         public int DisplayDiceRoll(Dice dice,Player p, int choice)
         {
             int diceroll = 0;
-            int turnleft = 3;
+            int turnleft = 3-p.Sentence;
             string validate = " ";
             do
             {
@@ -39,6 +39,7 @@ namespace ProjetMonopoly
                 Console.WriteLine("\n\nDiceroll = {0}\n\n", diceroll);
                 p.Position += diceroll;
                 turnleft = 0;
+                p.Sentence = 0;
             }
             else if (choice == 2)
             {
@@ -48,13 +49,13 @@ namespace ProjetMonopoly
                     p.IsInJail = false;
                     p.Position += diceroll;
                     turnleft = 0;
+                    p.Sentence = 0;
                 }
                 else
                 {
                     Console.WriteLine("\n\nDiceroll = {0}\n\n", diceroll);
                     Console.WriteLine("Too bad, stay in jail and try again next turn");
                     p.Sentence += 1;
-                    turnleft -= 1;
                 }
             }
 
