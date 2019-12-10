@@ -163,7 +163,8 @@ namespace ProjetMonopoly
 
             if (currentcell.Type.Equals("Taxe"))
             {
-                p.Balance -= currentcell.Buyingprice;
+                p.Balance -= currentcell.Cost;
+                Console.WriteLine("You now have {0} euros ",p.Balance);
             }
 
             if (currentcell.Type.Equals("Prison"))
