@@ -9,20 +9,23 @@ namespace ProjetMonopoly
 {
     public class Board
     {
-        /**Variables d'instance*/
+        /* Instance variables */
         public ArrayList CellList = new ArrayList();
 
 
-        /** Constructeur privé */
+        /* Private constructor */
         private Board()
         {
             BoardFilling();
         }
 
-        /** Instance unique non préinitialisée */
+        /** Single Instance not pre-initialized */
         private static Board board = null;
 
-        /** Point d'accès pour l'instance unique du singleton */
+        /// <summary>
+        /// Static operation that returns the sole instance of the class // Access point for the single instance of the singleton
+        /// </summary>
+        /// <returns></returns>
         public static Board getInstance()
         {
             if (board == null)
@@ -31,6 +34,9 @@ namespace ProjetMonopoly
             }
             return board;
         }
+        /// <summary>
+        /// Method that read the file Monopoly_cells.txt and create all the cells and thus the board
+        /// </summary>
         public void BoardFilling()
         {
             string[] lines = System.IO.File.ReadAllLines("../../Monopoly_cells.txt");
