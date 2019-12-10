@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ProjetMonopoly
 {
@@ -55,8 +56,15 @@ namespace ProjetMonopoly
                 do
                 {
                     Console.WriteLine("Press 1 to pay 50 euros \nPress 2 to roll the dices");
-                    choice = int.Parse(Console.ReadLine());
-                    if(choice < 1 || choice > 2)
+                    try
+                    {
+                        choice = int.Parse(Console.ReadLine());
+                    }
+                    catch (FormatException ex)
+                    {
+                        Debug.WriteLine("Exception Message: " + ex.Message);
+                    }
+                    if (choice < 1 || choice > 2)
                     {
                         Console.WriteLine("Invalid choice please do it again.");
                     }

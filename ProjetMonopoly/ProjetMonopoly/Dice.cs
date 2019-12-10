@@ -48,8 +48,7 @@ namespace ProjetMonopoly
             Result result = new Result();
 			Random rand = new Random();
 			this.resd1 = rand.Next(1, 7);
-            Random rand2 = new Random();
-            this.resd2 = rand2.Next(1, 7);
+            this.resd2 = rand.Next(1, 7);
 			//this.resd1 = this.resd2 = 15;
             if(this.resd1==this.resd2)
 			{
