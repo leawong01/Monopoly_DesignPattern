@@ -6,6 +6,7 @@ namespace ProjetMonopoly
 {
     public class Menu
     {
+        /* Constructor */
         public Menu()
         {           
         }
@@ -15,6 +16,10 @@ namespace ProjetMonopoly
             return strategy.DisplayDiceRoll(dice, p, i);
         }
 
+        /// <summary>
+        /// Method that ask the user the number of player and create them with their pawn using the playerfactory
+        /// </summary>
+        /// <returns></returns>
 		public Player[] NbOfPlayers()
 		{
 			int nb_player = 0;
@@ -44,7 +49,12 @@ namespace ProjetMonopoly
 			return list_players;
 		}
 
-        public void CheckJail(Player p,Dice dice)
+        /// <summary>
+        /// Method that allows the player to make his choices durint his sentence in jail
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="dice"></param>
+        public void JailTurn(Player p,Dice dice)
         {
             Console.WriteLine("\n{0}, it's your turn.\n", p.Name);
             int choice = 0;
@@ -97,7 +107,7 @@ namespace ProjetMonopoly
             }
             else if (p.Sentence == 3)
             {
-                Console.WriteLine("It's your third turn iin Jail, pay 50euros, roll the dices and move your pawn !");
+                Console.WriteLine("It's your third turn in Jail, pay 50euros, roll the dices and move your pawn !");
                 turnleft = DiceRoll(new JailRollDice(), dice, p, 2);
             }
 
@@ -107,6 +117,11 @@ namespace ProjetMonopoly
             }
         }
 
+        /// <summary>
+        /// Method that determines if there is a winner 
+        /// </summary>
+        /// <param name="players"></param>
+        /// <returns></returns>
         public Player Winner(Player[] players)
 		{
 			Player winner = null;
@@ -131,6 +146,11 @@ namespace ProjetMonopoly
 			return winner;
 		}
 
+        /// <summary>
+        /// Display the cell on which the player is according to the type of the cell
+        /// </summary>
+        /// <param name="board"></param>
+        /// <param name="p"></param>
         public void DisplayCell(Board board,Player p)
         {
             if (p.Position > 39)
@@ -169,6 +189,9 @@ namespace ProjetMonopoly
             }
         }
 
+        /// <summary>
+        /// Course of the game using other method and covering all cases
+        /// </summary>
         public void StartGame()
 		{
 			Board board = Board.getInstance();
@@ -209,7 +232,7 @@ namespace ProjetMonopoly
                     }
                     else
                     {
-                        CheckJail(p, dice);
+                        JailTurn(p, dice);
                     }
 
 

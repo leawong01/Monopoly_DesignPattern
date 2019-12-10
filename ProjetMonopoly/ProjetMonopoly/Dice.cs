@@ -3,25 +3,30 @@ using System.Collections.Generic;
 
 namespace ProjetMonopoly
 {
+    /// <summary>
+    /// Simple structure that holds the dices results
+    /// </summary>
     public struct Result
     {
         public int resd;
         public bool dual;
     }
 
+    
     public class Dice
     {
-		private int resd1;
+        /* Instance variables */
+        private int resd1;
 		private int resd2;
         bool dual;
-
+        /* Constructor */
         public Dice()
         {
             this.resd1 = 0;
             this.resd2 = 0;
             this.dual = false;
         }
-
+        /* Properties */
         public int Resd1
 		{ get; set; }
 

@@ -4,13 +4,15 @@ namespace ProjetMonopoly
 {
     public class Cell
     {
+        /* Instance variables */
+
         int position;
         string name;
         string type;//Color or type
         int buyingprice;
         int cost;
-        /* int Nbhouse;*/
-        // string Owner;
+        int Nbhouse;
+        int Owner;
 
         //Constructor
         public Cell(int position, string name, string type, int buyingprice, int cost)
@@ -30,6 +32,10 @@ namespace ProjetMonopoly
         public int Position { get => position; set => position = value; }
 
         //Methods
+        /// <summary>
+        /// Method that describe a cell with its instance variables
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
 			string result = null;

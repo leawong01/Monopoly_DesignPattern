@@ -7,13 +7,10 @@ namespace ProjetMonopoly
         public static void Main(string[] args)
         {
 
-            TestsP testsp = new TestsP();
+            Menu menu = new Menu();
 
-            //testsp.program();
+            menu.StartGame();
 
-            TestL testl = new TestL();
-
-            testl.program();
             Console.ReadKey();            
         }
     }
