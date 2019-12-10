@@ -5,24 +5,19 @@ namespace ProjetMonopoly
 {
     public class PlayerFactory
     {
+        /// <summary>
+        /// create a new player with a pawn, a starting account of 1500euros, at the position 0
+        /// </summary>
+        /// <param name="i">
+        /// i is a random number between 1 and 8 to determine the pawn of the player
+        /// </param>
+        /// <returns></returns>
         public Player GetPlayer(int i)
         {
             
             Player player = new Player(Enum.GetName(typeof(Pawns), i), 1500, 0);
             return player;
         }
-
-        public Dictionary<int,int> BankStart()
-        {
-            Dictionary<int, int> bills = new Dictionary<int, int>();
-            bills.Add(500, 2);
-            bills.Add(100, 4);
-            bills.Add(50, 1);
-            bills.Add(20, 1);
-            bills.Add(10, 2);
-            bills.Add(5, 1);
-            bills.Add(1, 5);
-            return bills;
-        }
+       
     }
 }

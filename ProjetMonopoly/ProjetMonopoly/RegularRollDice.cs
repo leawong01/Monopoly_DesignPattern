@@ -3,6 +3,23 @@ namespace ProjetMonopoly
 {
     public class RegularRollDice: DiceRollStrategy
     {
+        /// <summary>
+        /// implements the function DisplayDiceRoll of the strategy pattern
+        /// method that displays the result of the dices and makes the player move when the player is not in jail
+        /// </summary>
+        /// <param name="dice">
+        /// avoid creating a new dice at each turn
+        /// </param>
+        /// <param name="p">
+        /// the player playing
+        /// </param>
+        /// <param name="turn">
+        /// the turn of the current player
+        /// </param>
+        /// <returns>
+        /// if the player made a double it returns turn-1 meaning the for loop will increment the turn
+        /// and go back to this player
+        /// </returns>
         public int DisplayDiceRoll(Dice dice, Player p, int turn)
         {
             int diceroll = 0;
@@ -40,6 +57,21 @@ namespace ProjetMonopoly
             return turn;
         }
 
+        /// <summary>
+        /// function that analyzes how many duble in a row a player made an if less than 3, he can play again
+        /// </summary>
+        /// <param name="p">
+        /// the player playing
+        /// </param>
+        /// <param name="diceroll">
+        /// the sum of the dices
+        /// </param>
+        /// <param name="dble">
+        ///the number of double the player made, if the number is 3 he goes to jail
+        /// </param> 
+        /// <returns>
+        /// if the player goes in jail or not
+        /// </returns>
         public bool MadeDouble(Player p, int diceroll, int dble)
         {
             Console.WriteLine("\n\nCongrats you made a double {0}.\n", diceroll / 2);

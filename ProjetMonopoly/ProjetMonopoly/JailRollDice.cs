@@ -4,15 +4,22 @@ namespace ProjetMonopoly
     public class JailRollDice : DiceRollStrategy
     {
         /// <summary>
-        /// Implementation of Strategy Pattern 
+        /// Implementation of Strategy Pattern
+        /// Method to display the result of the diceroll if the player is in jail
         /// </summary>
-        /// <param name="dice"></param>
-        /// <param name="p"></param>
-        /// <param name="choice">
-        ///  1 is if the player choose to pay on turn 1 so he directly go out
-        ///  2 is if the player can't pay or if he chose to try making a double
+        /// <param name="dice">
+        /// Avoid creating a new dice each turn
         /// </param>
-        /// <returns></returns>
+        /// <param name="p">
+        /// The current player
+        /// </param>
+        /// <param name="choice">
+        ///  1 is if the player choose to pay on turn 1 so he directly goes out
+        ///  2 is if the player can't pay or if he wants to trying making a double
+        /// </param>
+        /// <returns>
+        /// Returns the number of turns left in jail
+        /// </returns>
         public int DisplayDiceRoll(Dice dice,Player p, int choice)
         {
             int diceroll = 0;
