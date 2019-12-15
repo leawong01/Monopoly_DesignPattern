@@ -1,5 +1,4 @@
 # Monopoly_DesignPattern
-Monopoly_DesignPattern
 
 ## Patterns used:   
 
